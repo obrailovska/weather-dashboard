@@ -13,3 +13,8 @@ header {
 .forecast-title {
   text-align: center;
 }
+.cityName {
+  background-color: #b1bfd8;
+
+  border-radius: 5px;
+}

@@ -178,7 +178,7 @@ function generateBtn() {
     var b = $("<button>");
     b.text(temp[i]);
     b.attr("data-city", temp[i]);
-    b.addClass("cityName");
+    b.addClass("cityName col-12");
     $("#cityBtn").append(b);
   }
 }
@@ -188,7 +188,7 @@ $(document).on("click", ".cityName", function (e) {
   var c = $(this).attr("data-city");
   console.log("City name " + c);
   formHandler(c);
-  display5DayForecast(c);
+  get5DayForecastCity(c);
 });
 
 generateBtn();
