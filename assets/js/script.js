@@ -7,10 +7,15 @@ var weatherContainerEl = document.querySelector("#current-weather");
 // var lat = data.coord.lat;
 // var lon = data.coord.lon;
 var apiKey = "0591d419f68f0d08f7f996edae3e93c6";
+var cityList = [];
 
 $("#search-btn").on("click", (event) => {
   event.preventDefault();
   var city = $("#city-name").val();
+  cityList = JSON.parse(localStorage.getItem("city")) || [];
+  cityList.push(city);
+  localStorage.setItem("city", JSON.stringify(cityList));
+  generateBtn();
   formHandler(city);
 });
 
@@ -125,8 +130,9 @@ var get5DayForecast = function (data) {
 var display5DayForecast = function (data) {
   var forecastContainerEl = document.querySelector("#forecast-weather");
   forecastContainerEl.textContent = "";
-  var forecastTitle = document.querySelector("#forecast-title");
+  var forecastTitle = document.querySelector("#forecast-title ");
   forecastTitle.textContent = "5-Day Forecast";
+
   var forecast = data.list;
 
   for (var i = 5; i < forecast.length; i = i + 8) {
@@ -164,3 +170,25 @@ var display5DayForecast = function (data) {
     $("#forecast-weather").append(forecastHumid);
   }
 };
+
+function generateBtn() {
+  var temp = JSON.parse(localStorage.getItem("city")) || [];
+  $("#cityBtn").empty();
+  for (var i = 0; i < temp.length; i++) {
+    var b = $("<button>");
+    b.text(temp[i]);
+    b.attr("data-city", temp[i]);
+    b.addClass("cityName");
+    $("#cityBtn").append(b);
+  }
+}
+
+$(document).on("click", ".cityName", function (e) {
+  e.preventDefault();
+  var c = $(this).attr("data-city");
+  console.log("City name " + c);
+  formHandler(c);
+  display5DayForecast(c);
+});
+
+generateBtn();

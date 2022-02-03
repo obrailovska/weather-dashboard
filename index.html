@@ -17,9 +17,10 @@
     </header>
     <main class="container-fluid">
       <div class="row">
-        <div class="card">
+        <div class="card col-3">
           <h3 class="card-header text-appercase">Search For a City:</h3>
-          <form id="city-form" class="card-body">
+          <form id="city-form">
+            <!-- class="card-body" -->
             <label class="form-label" for="city-name"></label>
             <input
               name="name of the city"
@@ -30,13 +31,17 @@
             />
             <button id="search-btn" class="btn">Search</button>
           </form>
+          <div id="cityBtn"></div>
         </div>
-      </div>
-      <div id="current-weather" class="list-group-item"></div>
-      <div class="row border" id="forecast-container">
-        <h2 class="col-12" id="forecast-title"></h2>
 
-        <div id="forecast-weather" c lass="d-flex"></div>
+        <div class="col-9">
+          <div id="current-weather" class="list-group-item"></div>
+          <div class="row border" id="forecast-container">
+            <h2 class="col-12" id="forecast-title"></h2>
+
+            <div id="forecast-weather" class="col-12 list-group-item"></div>
+          </div>
+        </div>
       </div>
     </main>
     <script

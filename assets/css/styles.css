@@ -10,3 +10,6 @@ header {
   background-color: #009ffd;
   border-radius: 5px;
 }
+.forecast-title {
+  text-align: center;
+}
